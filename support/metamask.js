@@ -221,6 +221,8 @@ module.exports = {
     return true;
   },
   async signMessage() {
+    await puppeteer.init();
+    await puppeteer.assignWindows();
     await puppeteer.metamaskWindow().waitForTimeout(3000);
     const notificationPage = await puppeteer.switchToMetamaskNotification();
     await puppeteer.waitAndClick(
